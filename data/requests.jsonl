@@ -1,0 +1,3 @@
+{"id":"REQ1","kind":"benchmark","requester":"E00","market":"EU","services":["publishing","design"],"metrics":["rev-hour","rev-contract"],"members":["E00","E01","E02","E03","E04","E05","E06","E07","E08","E09","E10","E11"]}
+{"id":"REQ2","kind":"publish","requester":"alliance","market":"EU","services":["publishing","design"],"metrics":["external-revenue"],"members":["E11"]}
+{"id":"REQ3","kind":"publish","requester":"alliance","market":"all","services":["support"],"metrics":["external-revenue"],"members":["E11","E12","E13","E14","E15","E16","E17","E18","E19","E20","E21","E22","E23"]}

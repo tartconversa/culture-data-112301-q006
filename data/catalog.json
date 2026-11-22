@@ -1,0 +1,400 @@
+{
+  "format": "jsonl-utf8-v1",
+  "synthetic": true,
+  "tables": {
+    "enterprises": {
+      "description": "联盟成员，不含真实企业信息。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "企业"
+        },
+        "opened_on": {
+          "type": "str",
+          "nullable": false,
+          "description": "开业日"
+        },
+        "market": {
+          "type": "str",
+          "nullable": false,
+          "description": "主要市场"
+        },
+        "size": {
+          "type": "str",
+          "nullable": false,
+          "description": "规模层"
+        }
+      },
+      "key": "id",
+      "references": {},
+      "sha256": "2c4a17242e7b1eb989ea41f08ad4d4d339cb7599d64af165dd7a077abe7b18cc",
+      "row_count": 36
+    },
+    "projects": {
+      "description": "联合项目及内部转包金额。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "项目"
+        },
+        "lead": {
+          "type": "str",
+          "nullable": false,
+          "description": "主承包"
+        },
+        "partner": {
+          "type": "str",
+          "nullable": false,
+          "description": "合作方"
+        },
+        "total_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "合同外部总额"
+        },
+        "internal_subcontract_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "内部转包额"
+        },
+        "completed_on": {
+          "type": "str",
+          "nullable": true,
+          "description": "履约完成日，空为未完成"
+        }
+      },
+      "key": "id",
+      "references": {
+        "lead": [
+          "enterprises",
+          "id"
+        ],
+        "partner": [
+          "enterprises",
+          "id"
+        ]
+      },
+      "sha256": "b9b3d6de7a170a4856d2e51f51800f9233dc0ea4ce042d5bec2061b4ba8e219a",
+      "row_count": 360
+    },
+    "filings": {
+      "description": "成员逐项目月度申报。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "申报"
+        },
+        "enterprise": {
+          "type": "str",
+          "nullable": false,
+          "description": "企业"
+        },
+        "project": {
+          "type": "str",
+          "nullable": false,
+          "description": "项目"
+        },
+        "period": {
+          "type": "str",
+          "nullable": false,
+          "description": "月份"
+        },
+        "service": {
+          "type": "str",
+          "nullable": false,
+          "description": "业务类别"
+        },
+        "revenue_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "申报收入美分"
+        },
+        "hours": {
+          "type": "float",
+          "nullable": false,
+          "description": "履约工时"
+        },
+        "basis": {
+          "type": "str",
+          "nullable": false,
+          "description": "总包或转包口径"
+        },
+        "version": {
+          "type": "int",
+          "nullable": false,
+          "description": "申报版本"
+        },
+        "received_on": {
+          "type": "str",
+          "nullable": false,
+          "description": "接收日"
+        }
+      },
+      "key": "id",
+      "references": {
+        "enterprise": [
+          "enterprises",
+          "id"
+        ],
+        "project": [
+          "projects",
+          "id"
+        ]
+      },
+      "sha256": "35461bbe938a589450454d5e589b79bdae08beb78d97590b38081588cae4bc9a",
+      "row_count": 720
+    },
+    "definitions": {
+      "description": "公开指标口径与观察要求。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "指标"
+        },
+        "numerator": {
+          "type": "str",
+          "nullable": false,
+          "description": "分子口径"
+        },
+        "denominator": {
+          "type": "str",
+          "nullable": false,
+          "description": "分母口径"
+        },
+        "min_months": {
+          "type": "int",
+          "nullable": false,
+          "description": "最少已经营观察月"
+        },
+        "exclude_self": {
+          "type": "bool",
+          "nullable": false,
+          "description": "成员参考分布剔除自身"
+        },
+        "minimum_group": {
+          "type": "int",
+          "nullable": false,
+          "description": "参考组最少企业数"
+        }
+      },
+      "key": "id",
+      "references": {},
+      "sha256": "550d247274ec3e95b91cbcf675b0dc6d29681f17ac4dc0299231fdb4a13bd350",
+      "row_count": 3
+    },
+    "definition_changes": {
+      "description": "业务口径变更的可换算范围。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "变更"
+        },
+        "service": {
+          "type": "str",
+          "nullable": false,
+          "description": "业务类别"
+        },
+        "effective_period": {
+          "type": "str",
+          "nullable": false,
+          "description": "生效月"
+        },
+        "old_basis": {
+          "type": "str",
+          "nullable": false,
+          "description": "旧口径"
+        },
+        "new_basis": {
+          "type": "str",
+          "nullable": false,
+          "description": "新口径"
+        },
+        "exact_projects": {
+          "type": "list",
+          "nullable": false,
+          "description": "有精确换算依据的项目"
+        }
+      },
+      "key": "id",
+      "references": {},
+      "sha256": "405c51a2305b43ae6d4de3c653fbee4803554793b866707e6a97844328cb0cac",
+      "row_count": 2
+    },
+    "disclosure_policy": {
+      "description": "联盟公开披露政策。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "接收层级"
+        },
+        "minimum_contributors": {
+          "type": "int",
+          "nullable": false,
+          "description": "每个可推导细格最少贡献企业数"
+        },
+        "max_share": {
+          "type": "float",
+          "nullable": false,
+          "description": "最大单企业贡献比"
+        },
+        "minimum_interval_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "不安全细格可公开区间的最小宽度"
+        },
+        "private_detail": {
+          "type": "bool",
+          "nullable": false,
+          "description": "是否允许他人明细"
+        }
+      },
+      "key": "id",
+      "references": {},
+      "sha256": "682fb681002d3eb2441213fff5071a711e04f422fc424c43039d5946f257ec70",
+      "row_count": 2
+    },
+    "published_cells": {
+      "description": "历史已公开的准确数与区间。成员列表仅为内部统计范围。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "公开格"
+        },
+        "published_on": {
+          "type": "str",
+          "nullable": false,
+          "description": "发布日期"
+        },
+        "members": {
+          "type": "list",
+          "nullable": false,
+          "description": "统计企业集合"
+        },
+        "metric": {
+          "type": "str",
+          "nullable": false,
+          "description": "指标"
+        },
+        "period": {
+          "type": "str",
+          "nullable": false,
+          "description": "统计期"
+        },
+        "lower_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "公开下界"
+        },
+        "upper_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "公开上界，等于下界为准确值"
+        },
+        "audience": {
+          "type": "str",
+          "nullable": false,
+          "description": "公开范围"
+        }
+      },
+      "key": "id",
+      "references": {},
+      "sha256": "f39cd354124d24893ae3a9ddeff3c6b7efebc5725046018e3e61e353cdd2030f",
+      "row_count": 2
+    },
+    "requests": {
+      "description": "待处理的成员对标及联盟发布申请。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "申请"
+        },
+        "kind": {
+          "type": "str",
+          "nullable": false,
+          "description": "对标或发布"
+        },
+        "requester": {
+          "type": "str",
+          "nullable": false,
+          "description": "发起方"
+        },
+        "market": {
+          "type": "str",
+          "nullable": false,
+          "description": "参考市场"
+        },
+        "services": {
+          "type": "list",
+          "nullable": false,
+          "description": "业务集合"
+        },
+        "metrics": {
+          "type": "list",
+          "nullable": false,
+          "description": "指标集合"
+        },
+        "members": {
+          "type": "list",
+          "nullable": false,
+          "description": "申请统计范围"
+        }
+      },
+      "key": "id",
+      "references": {},
+      "sha256": "cb49c7da2e6ee812e452ab6c1c404d3ef410c8909901a3b143ac04e23d1fc442",
+      "row_count": 3
+    },
+    "revisions": {
+      "description": "后续项目修订与撤回。",
+      "fields": {
+        "id": {
+          "type": "str",
+          "nullable": false,
+          "description": "修订"
+        },
+        "filing": {
+          "type": "str",
+          "nullable": false,
+          "description": "被修订申报"
+        },
+        "version": {
+          "type": "int",
+          "nullable": false,
+          "description": "版本"
+        },
+        "revenue_minor": {
+          "type": "int",
+          "nullable": false,
+          "description": "当前声明收入"
+        },
+        "received_on": {
+          "type": "str",
+          "nullable": false,
+          "description": "到达日"
+        },
+        "action": {
+          "type": "str",
+          "nullable": false,
+          "description": "替换或撤回修订"
+        }
+      },
+      "key": "id",
+      "references": {
+        "filing": [
+          "filings",
+          "id"
+        ]
+      },
+      "sha256": "ba4a5f0b198301d34c552ff18d53c97e703ed405a5a07412a5c7224dc82ddbdc",
+      "row_count": 2
+    }
+  }
+}

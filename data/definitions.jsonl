@@ -1,0 +1,3 @@
+{"id":"rev-hour","numerator":"external-revenue","denominator":"hours","min_months":6,"exclude_self":true,"minimum_group":6}
+{"id":"rev-contract","numerator":"external-revenue","denominator":"completed-contracts","min_months":9,"exclude_self":true,"minimum_group":6}
+{"id":"concentration","numerator":"top-contract-revenue","denominator":"external-revenue","min_months":6,"exclude_self":true,"minimum_group":6}

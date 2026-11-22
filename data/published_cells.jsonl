@@ -1,0 +1,2 @@
+{"id":"PUB-total","published_on":"2026-09-01","members":["E00","E01","E02","E03","E04","E05","E06","E07","E08","E09","E10","E11"],"metric":"external-revenue","period":"2026-02/2026-08","lower_minor":27978600,"upper_minor":27978600,"audience":"public"}
+{"id":"PUB-part","published_on":"2026-09-03","members":["E00","E01","E02","E03","E04","E05","E06","E07","E08","E09","E10"],"metric":"external-revenue","period":"2026-02/2026-08","lower_minor":26515250,"upper_minor":26715250,"audience":"public"}
