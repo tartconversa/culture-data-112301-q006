@@ -236,12 +236,12 @@
         "minimum_contributors": {
           "type": "int",
           "nullable": false,
-          "description": "每个可推导细格最少贡献企业数"
+          "description": "准确值允许的最少贡献企业数"
         },
         "max_share": {
           "type": "float",
           "nullable": false,
-          "description": "最大单企业贡献比"
+          "description": "准确值允许的最大单企业贡献比"
         },
         "minimum_interval_minor": {
           "type": "int",
