@@ -1,0 +1,12 @@
+{
+  "id": "F-DEMO-NEW-01",
+  "enterprise": "E00",
+  "project": "P000",
+  "period": "2026-09",
+  "service": "publishing",
+  "revenue_minor": 92000,
+  "hours": 28.5,
+  "basis": "gross-prime",
+  "version": 1,
+  "received_on": "2026-11-20"
+}

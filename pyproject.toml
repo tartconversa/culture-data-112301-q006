@@ -1,5 +1,12 @@
 [project]
 name = "service-provider-benchmark"
-version = "0.1.0"
+version = "1.0.0"
+description = "跨境服务商对标的可比组构建与受限结果发布应用"
 requires-python = ">=3.11,<3.15"
 dependencies = []
+
+[tool.setuptools]
+packages = ["benchmark"]
+
+[tool.unittest]
+start-dir = "tests"

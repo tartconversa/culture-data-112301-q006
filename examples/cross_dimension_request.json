@@ -1,0 +1,23 @@
+{
+  "id": "REQ-DEMO-CROSS",
+  "kind": "publish",
+  "requester": "alliance",
+  "market": "all",
+  "services": ["publishing", "localization", "design", "support"],
+  "metrics": ["external-revenue"],
+  "members": ["E00", "E01", "E02", "E03", "E04", "E05"],
+  "cells": [
+    {
+      "tag": "all-six",
+      "members": ["E00", "E01", "E02", "E03", "E04", "E05"],
+      "services": ["publishing", "localization", "design", "support"],
+      "metrics": ["external-revenue"]
+    },
+    {
+      "tag": "first-five",
+      "members": ["E00", "E01", "E02", "E03", "E04"],
+      "services": ["publishing", "localization", "design", "support"],
+      "metrics": ["external-revenue"]
+    }
+  ]
+}

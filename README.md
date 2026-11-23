@@ -17,3 +17,17 @@ python3 -m unittest discover -s tests -v
 Windows PowerShell中可用`.venv\Scripts\Activate.ps1`激活虚拟环境。
 
 资料检查入口输出各表行数，验证内容指纹、字段类型及直接外键。现有测试检查资料完整性和损坏检测，其通过只说明资料可读取。data及docs中的记录不包含经营分析结果。应用产生的本地状态可放入state，导出内容可放入outputs，两者已从Git排除。
+
+## 对标应用
+
+在上述资料之上实现的可运行应用位于 `benchmark/`，命令行入口为 `python -m benchmark.cli`，
+覆盖申报接收与修订、可比性分析、成员对标查询、联盟发布申请审查与三级权限。
+设计与用法见 [docs/应用说明.md](docs/应用说明.md)，端到端演示：
+
+```sh
+python tools/demo.py
+python -m unittest discover -s tests -v
+```
+
+披露审查默认使用 SciPy HiGHS 做线性推导；环境缺少 SciPy 时自动降级为纯标准库
+区间传播，结果只会偏宽、不会泄露更窄信息。
